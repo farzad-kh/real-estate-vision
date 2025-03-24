@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const getProperty = cache(async (id, session) => {
+  
   const [property, user] = await Promise.all([
     prisma.property.findUnique({
       where: { id: id.toString() },
@@ -16,7 +17,7 @@ const getProperty = cache(async (id, session) => {
           where: { id: session?.user?.id },
           select: { sentMessages: { select: { propertyId: true } } },
         })
-      : Promise.resolve(null),
+      : null,
   ]);
   return { property, user };
 });
@@ -30,10 +31,9 @@ const page = async ({ params: { id } }) => {
   const { property, user } = await getProperty(id, session);
 
   if (!property) return notFound();
-  let hasSentMessage = false;
-  hasSentMessage = user.sentMessages.some(
-    (item) => item.propertyId === property.id
-  );
+  let hasSentMessage =
+    user?.sentMessages?.some((item) => item.propertyId === property.id) ||
+    false;
 
   const isOwner = property.userId === session?.user?.id;
 
