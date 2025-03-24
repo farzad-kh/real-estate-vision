@@ -152,7 +152,7 @@
 // export default page;
 // export const revalidate = 60;
 
-"use cache";
+
 import prisma from "@/prisma/client";
 
 import SearchContainer from "../components/template/SearchContainer";
