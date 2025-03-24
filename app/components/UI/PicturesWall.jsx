@@ -41,8 +41,6 @@ const PicturesWall = ({
     } else return;
   }, []);
 
- 
-
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
@@ -52,6 +50,8 @@ const PicturesWall = ({
   };
 
   const beforeUpload = (file) => {
+   
+    
     const isJpgOrPng =
       file.type === "image/jpeg" ||
       file.type === "image/png" ||
@@ -105,9 +105,14 @@ const PicturesWall = ({
 
   const handleRemove = async (file) => {
     setFileList(fileList.filter((item) => item.uid !== file.uid));
-   
   };
-
+  const dummyRequest = ({ file, onSuccess }) => {
+   
+    
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  };
   const uploadButton = (
     <button
       style={{
@@ -156,7 +161,9 @@ const PicturesWall = ({
         control={control}
         render={({ field: { ref, ...field } }) => (
           <Upload
-          action={null}
+       
+       
+            customRequest={dummyRequest}
             showUploadList={{
               showRemoveIcon: true,
               removeIcon: (
@@ -197,4 +204,3 @@ const PicturesWall = ({
 };
 
 export default PicturesWall;
- 

@@ -1,4 +1,5 @@
- 
+export const revalidate = 60;
+
 
 
 import { NextResponse } from "next/server";

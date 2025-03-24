@@ -20,7 +20,9 @@ const AuthStatus = ({notifications}) => {
           <Navbar notifications={notifications} session={session} />
         </Flex>
       ) : (
-        <LoginButton>Log in</LoginButton>
+   <div className="mt-1">
+         <LoginButton>Log in</LoginButton> 
+   </div>
       )}
     </>
   );
