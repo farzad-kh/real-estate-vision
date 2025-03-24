@@ -50,8 +50,6 @@ const PicturesWall = ({
   };
 
   const beforeUpload = (file) => {
-   
-    
     const isJpgOrPng =
       file.type === "image/jpeg" ||
       file.type === "image/png" ||
@@ -106,12 +104,13 @@ const PicturesWall = ({
   const handleRemove = async (file) => {
     setFileList(fileList.filter((item) => item.uid !== file.uid));
   };
+
   const dummyRequest = ({ file, onSuccess }) => {
-   
     
     setTimeout(() => {
       onSuccess("ok");
-    }, 0);
+      handleChange({ fileList: [...fileList, file] });
+    }, 1500);
   };
   const uploadButton = (
     <button
@@ -138,7 +137,7 @@ const PicturesWall = ({
   );
 
   return (
-    <Form.Item
+    <Form.Item className="overflow-y-auto overflow-x-hidden h-full max-h-[300px] w-full" 
       required
       validateStatus={
         errors && (!imgWatch?.length || errors?.images?.message) && "error"
@@ -161,8 +160,6 @@ const PicturesWall = ({
         control={control}
         render={({ field: { ref, ...field } }) => (
           <Upload
-       
-       
             customRequest={dummyRequest}
             showUploadList={{
               showRemoveIcon: true,
