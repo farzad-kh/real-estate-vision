@@ -69,10 +69,26 @@ body:has(.scroll-hidden) {
   "Noto Color Emoji" !important;
  } */
 
-body:has(.loading_info) {
+ body:has(.loading_info) {
   overflow-y: hidden;
+  touch-action: none;
 }
 
+ 
+body:-webkit-has(.loading_info) {
+  overflow-y: hidden;
+  touch-action: none;
+}
+
+body:-moz-has(.loading_info) {
+  overflow-y: hidden;
+  touch-action: none;
+}
+
+body:-ms-has(.loading_info) {
+  overflow-y: hidden;
+  touch-action: none;
+}
 
 h1 {
   margin: 0;
@@ -354,6 +370,11 @@ h1 {
 
 @media (hover:none) {
   .filter-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .filter-scroll::-webkit-scrollbar {
     scrollbar-width: none;
   }
 }
@@ -727,12 +748,13 @@ label {
 
 @media (max-width: 786px) {
   .ant-collapse-content-box {
-    padding-right:0 !important ; 
-    padding-left:0 !important ; 
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
-  .ant-collapse-header{
-    padding-right:0 !important ; 
-    padding-left:0 !important ; 
+
+  .ant-collapse-header {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 }
 

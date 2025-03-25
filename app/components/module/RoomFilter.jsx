@@ -111,6 +111,7 @@ const RoomFilter = ({
               clearParamHandler={() => clearParamHandler(activeKey)}
               activeKey={activeKey}
               onClose={onClose}
+            
             ></DrawerUI>
           )}
         </AnimatePresence>

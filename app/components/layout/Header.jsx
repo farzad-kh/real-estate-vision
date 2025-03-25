@@ -35,6 +35,11 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+
+
+
+
+    
   }, []);
 
   useEffect(() => {
@@ -51,6 +56,8 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+ 
 
   return (
     <header
