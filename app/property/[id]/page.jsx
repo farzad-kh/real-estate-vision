@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import Loading from "./loading";
+ 
 
 const getProperty = cache(async (id, session) => {
   
@@ -39,12 +39,12 @@ const page = async ({ params: { id } }) => {
   const isOwner = property.userId === session?.user?.id;
 
   return (
-    // <ProperyId
-    //   isOwner={isOwner}
-    //   property={property}
-    //   hasSentMessage={hasSentMessage}
-    // />
-    <Loading/>
+    <ProperyId
+      isOwner={isOwner}
+      property={property}
+      hasSentMessage={hasSentMessage}
+    />
+ 
   );
 };
 

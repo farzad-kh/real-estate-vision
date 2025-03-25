@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Col, Row, Skeleton } from "antd";
 import SkeletonGallery from "@/app/components/UI/loading/SkeletonGallery";
 
-const Loading = () => {
+const loading = () => {
 
   return (
     <div>
@@ -102,4 +102,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default loading;
