@@ -311,6 +311,18 @@ const page = async ({ searchParams }) => {
 export default page;
 export const revalidate = 60;
 
+
+
+
+
+
+
+
+
+
+
+
+
 export async function generateMetadata({ searchParams }) {
   const searchQ = searchParams.q;
   const searchType = searchParams.type;

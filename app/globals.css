@@ -59,7 +59,11 @@ html {
 
  
  body.lock{
-  overflow-y: hidden  
+  overflow-y: hidden ;
+  position: fixed; 
+  touch-action: none;
+ 
+-webkit-overflow-scrolling: none;
  }
  
 body:has(.loading_info) {

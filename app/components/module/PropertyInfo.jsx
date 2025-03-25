@@ -23,7 +23,7 @@ const PropertyInfo = ({ property }) => {
     <Flex  id="activeNav" vertical gap={20}>
     
       <section className="transition-all ">
-        <div className="flex gap-3 justify-end  lg:hidden">
+        <div className="flex gap-3 justify-end mb-6  lg:hidden">
           <SharedBtn id={property.id} defaultType>
             Shared
           </SharedBtn>
