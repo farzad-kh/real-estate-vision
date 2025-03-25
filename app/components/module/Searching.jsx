@@ -58,7 +58,7 @@ const option= [
         </Flex>
         <Flex className=" w-full sm:max-w-[70%] placeholder:max-md:text-sm">
           <Input
-        
+        size="large"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search country, city or stay"

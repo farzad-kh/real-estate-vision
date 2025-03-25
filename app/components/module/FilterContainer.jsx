@@ -240,7 +240,7 @@ const FilterContainer = () => {
                   </div>
                 </div>
               </Badge>
-              <div ref={dropdownRefBed} className="flex items-center">
+              <div ref={dropdownRefBed} className="flex items-center flex-shrink-0">
                 <RoomFilter
                   dropdownRef={dropdownRefBed}
                   activeKey={"bedrooms"}
@@ -252,7 +252,7 @@ const FilterContainer = () => {
                   uiConfig={uiConfig}
                 />
               </div>
-              <div ref={dropdownRefSleep} className="relative">
+              <div ref={dropdownRefSleep} className="flex items-center flex-shrink-0">
                 <RoomFilter
                   dropdownRef={dropdownRefSleep}
                   activeKey={"sleeps"}
@@ -262,7 +262,7 @@ const FilterContainer = () => {
                   uiConfig={uiConfig}
                 />
               </div>
-              <div ref={dropdownRefBath} className="relative">
+              <div ref={dropdownRefBath} className="flex items-center flex-shrink-0">
                 <RoomFilter
                   dropdownRef={dropdownRefBath}
                   activeKey={"bathrooms"}

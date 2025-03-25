@@ -26,18 +26,18 @@ const FilterRoomBtn = ({windowSize, setInitialFilters, clearParamHandler,setDrop
         sleeps: <LuBed  className="text-lg" />,
       };
     return (
-        <Badge>
+   
         <div
           role="button"
           onClick={(e) => toggleDropDown(e, activeKey)}
-          className={`cursor-pointer border  px-3 py-[8px] rounded-full flex gap-1 items-center hover:bg-black/5 overflow-hidden ${
+          className={`cursor-pointer border h-[35px]  px-3 py-[8px] rounded-full flex gap-1 items-center  hover:bg-black/5 overflow-hidden ${
             roomsCount > 1 ? "bg-slate-100 text-[#386b98]" : "border-zinc-300"
           }`}
         >
           <AnimatePresence mode="popLayout">
             {roomsCount > 1 ? (
               <motion.div
-                className="flex gap-1"
+                className="flex gap-1 "
                 key="close-icon"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -70,7 +70,7 @@ const FilterRoomBtn = ({windowSize, setInitialFilters, clearParamHandler,setDrop
               : activeKey}
           </div>
         </div>
-      </Badge>
+     
     );
 };
 
