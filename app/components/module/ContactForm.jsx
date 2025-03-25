@@ -4,15 +4,17 @@ import { Button, Flex, Typography } from "antd";
 import ContactFormInput from "./ContactFormInput";
  
 const { Title, Text} = Typography;
-const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session }) => {
+const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session,drawer }) => {
 
 
   return (
     <>
       <Flex vertical gap={12}>
+        {!drawer &&
         <Title className="text-center" level={3}>
           Contact property manager
         </Title>
+        }
         <Flex className="max-sm:border-b border-gray-200" wrap justify="center">
           {Object.entries(rates).map(
             ([key, val]) =>

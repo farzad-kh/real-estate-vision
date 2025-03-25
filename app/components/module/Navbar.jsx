@@ -11,6 +11,7 @@ import navBarIcon from "@/app/asset/navigation/index";
 import { useMessageReadStatusContext } from "@/app/context/MessageReadStatusContext";
 import MessageStatus from "./MessageStatus";
 import { useMessageStatusContext } from "@/app/context/MessageStatusContext";
+import { cleanUpScroll, disableScroll } from "@/app/utils/helpers";
 const Navbar = ({ session }) => {
   const router = useRouter();
   const { notif, setNotif } = useMessageReadStatusContext();
@@ -110,21 +111,14 @@ const Navbar = ({ session }) => {
   };
 
   useEffect(() => {
-    if (open && windowSize) {
-      document.body.classList.add("lock");
-      document.addEventListener("touchmove", preventDefault, { passive: false });
-    } else {
-      document.body.classList.remove("lock");
-      document.removeEventListener("touchmove", preventDefault);
-    }
+    disableScroll(open, windowSize);
     return () => {
-      document.removeEventListener("touchmove", preventDefault);
+      cleanUpScroll();
     };
   }, [open]);
-  
-  function preventDefault(e) {
-    e.preventDefault();
-  }
+
+
+ 
   const itemsDrawer = [
     {
       label: <MessageStatus onClose={onClose} responsive />,

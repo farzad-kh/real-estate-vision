@@ -1,8 +1,7 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
 
-import DropdownMenu from "../module/DropdownMenu";
-import { AnimatePresence } from "motion/react";
+ 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AuthStatus from "../module/AuthStatus";
@@ -71,15 +70,7 @@ const Header = () => {
             <Image alt="home Vision Logo" className="items-center" width={30} height={30} src={homeVisionLogo} />
           </Link>
  
-        <AnimatePresence>
-          {isOpen && (
-            <DropdownMenu
-              pathName={pathName}
-              closeHandler={closeHandler}
-              headerLinks={headerLinks}
-            />
-          )}
-        </AnimatePresence>
+         
 
         <Suspense fallback={<div>Loading...</div>}>
           <SearchDropdown />

@@ -59,4 +59,25 @@ function extractCloudinaryId(url) {
     }));
  }
 
-export { ratesPer, getBase64,resizeImage,getBase64Strings ,extractCloudinaryId ,singelImageFilter}
+
+
+ function disableScroll(open, winSize) {
+  if (open && winSize) {
+    document.body.classList.add("lock");
+    document.addEventListener("touchmove", preventDefault, { passive: false });
+  } else {
+    document.body.classList.remove("lock");
+    document.removeEventListener("touchmove", preventDefault);
+  }
+}
+ function cleanUpScroll() {
+  document.body.classList.remove("lock");
+  document.removeEventListener("touchmove", preventDefault);
+}
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+
+export { ratesPer, getBase64,resizeImage,getBase64Strings ,extractCloudinaryId ,singelImageFilter,disableScroll,cleanUpScroll }

@@ -29,31 +29,29 @@ const ProperyId = ({ property, isOwner, hasSentMessage }) => {
 
   return (
     <NotificationProvider>
-      <div  className=" max-md:py-0 py-7  w-full " >
+      <div className=" max-md:py-0 py-7  w-full ">
         <div className="container max-w-screen-2xl   m-auto  max-md:px-0 px-7   ">
-
-        <Gallery propertyImg={property?.images} />
+          <Gallery propertyImg={property?.images} />
         </div>
-          <div className=" container max-w-screen-2xl   m-auto  max-md:px-4 px-7 ">
-        <Row className="max-lg:w-full w-full" >
-
-          <Col xs={24} sm={24} md={24} lg={14} xl={14}>
-            <section className="w-full">
-              <PropertyInfo property={property} />
-            </section>
-          </Col>
-          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
-            <section className="sticky top-5 ">
-              <aside>
-                <ContactCard
-                  propertyDetails={propertyDetails}
-                  hasSentMessage={hasSentMessage}
+        <div className=" container max-w-screen-2xl   m-auto  max-md:px-4 px-7 ">
+          <Row className="max-lg:w-full w-full">
+            <Col xs={24} sm={24} md={24} lg={14} xl={14}>
+              <section className="w-full">
+                <PropertyInfo property={property} />
+              </section>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={10} xl={10}>
+              <section className="sticky top-5 ">
+                <aside>
+                  <ContactCard
+                    propertyDetails={propertyDetails}
+                    hasSentMessage={hasSentMessage}
                   />
-              </aside>
-            </section>
-          </Col>
-        </Row>
-                  </div>
+                </aside>
+              </section>
+            </Col>
+          </Row>
+        </div>
       </div>
     </NotificationProvider>
   );
