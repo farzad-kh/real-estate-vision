@@ -68,7 +68,7 @@ const Header = () => {
       <div className="px-4 flex justify-between gap-4 m-auto max-w-screen-2xl">
      
           <Link className="items-center min-w-[30px] min-h-[30px]  flex" href={"/"}>
-            <Image className="items-center" width={30} height={30} src={homeVisionLogo} />
+            <Image alt="home Vision Logo" className="items-center" width={30} height={30} src={homeVisionLogo} />
           </Link>
  
         <AnimatePresence>

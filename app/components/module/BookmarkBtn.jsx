@@ -119,7 +119,7 @@ export const BookmarkDeleteBtn = ({
           <Button
             onClick={(event) => event.preventDefault()}
             className={`!font-semibold !p-2 !h-8 ${
-              btnStyle && "!bg-white/90 !rounded-full"
+              btnStyle && "!bg-white/90 !rounded-full !border-none"
             }`}
             type={defaultType ? "default" : "text"}
             disabled={loading}
@@ -136,7 +136,7 @@ export const BookmarkDeleteBtn = ({
         <Button
           onClick={bookmarkHandler}
           className={`!font-semibold !p-2 !h-8 ${
-            btnStyle && "!bg-white/90 !rounded-full"
+            btnStyle && "!bg-white/90 !rounded-full !border-none"
           }`}
           type={defaultType ? "default" : "text"}
           disabled={loading}
@@ -165,7 +165,7 @@ export const BookmarkAddBtn = ({
       <Button
         onClick={bookmarkHandler}
         className={`!font-semibold !p-2 !h-8 ${
-          btnStyle && "!bg-white/90 !rounded-full"
+          btnStyle && "!bg-white/90 !rounded-full !border-none"
         }`}
         type={defaultType ? "default" : "text"}
         disabled={loading}

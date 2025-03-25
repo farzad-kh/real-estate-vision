@@ -55,15 +55,15 @@ html {
 
 
 }
-
+ 
 
  
  body.lock{
   overflow-y: hidden ;
-  position: fixed; 
+
   touch-action: none;
  
--webkit-overflow-scrolling: none;
+  -webkit-overflow-scrolling: touch;
  }
  
 body:has(.loading_info) {
@@ -301,7 +301,7 @@ h1 {
 
 @media (hover: none) {
   .filter-scroll {
-    -webkit-overflow-scrolling: touch; 
+   
     overflow-y: scroll;  
     scrollbar-width: none;  
     -ms-overflow-style: none;  
@@ -439,6 +439,21 @@ label {
   height: 21px;
   align-self: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (hover:none){
   
@@ -622,9 +637,9 @@ label {
   left: 0;
 
   object-fit: cover;
-  /* اطمینان از پوشش کامل تصویر */
+ 
   z-index: -1;
-  /* می‌فرسته پشت محتوا */
+ 
 }
 
 

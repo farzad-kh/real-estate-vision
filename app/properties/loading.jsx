@@ -11,9 +11,9 @@ const LoadingProperties = () => {
           16,  
         ]}
       >
-        {[...Array(12)].map((item) => (
+        {[...Array(12)].map((item,i) => (
           <Col
-            key={item}
+            key={i + 1}
             className="gutter-row justify-center w-full py-4  rounded-md overflow-hidden"
             sm={12}  
             md={12}  

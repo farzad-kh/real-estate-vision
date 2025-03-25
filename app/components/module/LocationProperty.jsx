@@ -6,30 +6,30 @@ const LocationProperty = ({ location, ContactCard,userCard }) => {
   const { Text } = Typography;
   return (
     <Flex  gap={3}>
-      {!ContactCard && <FaLocationDot className="mt-1 text-[#8b8b8b]" />}
+     
 
-      <div className={` overflow-hidden ${userCard ?"ellipsis":""}`}>
-        <Text>
+      <div className={` font-semibold   overflow-hidden ${userCard ?"ellipsis":""}`}>
+        <Text type="secondary">
           {location?.street}
-          {" ∙ "}
+          {","}
         </Text>
-        <Text>
+        <Text type="secondary">
           {location?.city}
-          {" ∙ "}
+          {","}
         </Text>
-        <Text className="uppercase">
+        <Text type="secondary" className="">
           {location?.state}
-          {" ∙ "}
+          {","}
         </Text>
 
-        <Text>
+        <Text type="secondary">
           {location?.zipcode}
         
         </Text>
         {ContactCard ? (
           ""
         ) : (
-          <Text className="capitalize">{" ∙ "}{location?.country}</Text>
+          <Text type="secondary" className="capitalize">{" ∙ "}{location?.country}</Text>
         )}
       </div>
     </Flex>

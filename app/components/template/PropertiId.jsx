@@ -29,13 +29,13 @@ const ProperyId = ({ property, isOwner, hasSentMessage }) => {
 
   return (
     <NotificationProvider>
-      <div  className=" max-md:py-0 py-7 " >
-        <div className="container max-w-screen-2xl   m-auto  max-md:px-0 px-7 flex ">
+      <div  className=" max-md:py-0 py-7  w-full " >
+        <div className="container max-w-screen-2xl   m-auto  max-md:px-0 px-7   ">
 
         <Gallery propertyImg={property?.images} />
         </div>
-        <Row gutter={[16, 16]}  >
-          <div className="container max-w-screen-2xl   m-auto  max-md:px-4 px-7 flex ">
+          <div className=" container max-w-screen-2xl   m-auto  max-md:px-4 px-7 ">
+        <Row className="max-lg:w-full w-full" >
 
           <Col xs={24} sm={24} md={24} lg={14} xl={14}>
             <section className="w-full">
@@ -52,8 +52,8 @@ const ProperyId = ({ property, isOwner, hasSentMessage }) => {
               </aside>
             </section>
           </Col>
-                  </div>
         </Row>
+                  </div>
       </div>
     </NotificationProvider>
   );

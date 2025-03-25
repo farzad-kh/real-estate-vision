@@ -24,9 +24,12 @@ const getProperty = cache(async (id, session) => {
 });
 
 const page = async ({ params: { id } }) => {
-  if (!ObjectId.isValid(id)) {
+  const isValidObjectId = (id) => /^[0-9a-fA-F]{24}$/.test(id);
+
+  if (!isValidObjectId(id)) {
     return notFound();
   }
+  
   const session = await getServerSession(authOptions);
 
   const { property, user } = await getProperty(id, session);
@@ -62,27 +65,24 @@ export async function generateMetadata({ params: { id } }) {
   }
 
   return {
-    title: `${property?.name} - ${property?.location?.city}, ${property?.location?.country}, ${property.type} | Home Vision`,
-    description: `Discover ${property?.name}, a ${property?.type} with ${
-      property?.bedrooms || 0
-    } bedrooms and ${property?.bathrooms || 0} bathrooms, located in ${
-      property?.location?.city
+    title: `${property?.name || 'Property'} - ${property?.location?.city || 'Unknown City'}, ${property?.location?.country || 'Unknown Country'} | Home Vision`,
+    description: `Discover ${property?.name || 'this property'}, a ${property?.type || 'property'} with ${
+      property?.bedrooms ?? 0
+    } bedrooms and ${property?.bathrooms ?? 0} bathrooms, located in ${
+      property?.location?.city || 'an unknown city'
     }, ${
-      property?.location?.country
+      property?.location?.country || 'an unknown country'
     }. Enjoy modern amenities and a comfortable stay.`,
-    keywords: `${property?.name}, ${property?.type}, ${property?.location?.city}, ${property?.location?.country}, luxury stay, rental property, vacation home`,
+    keywords: `${property?.name || 'Property'}, ${property?.type || 'Property'}, ${property?.location?.city || 'City'}, ${property?.location?.country || 'Country'}, luxury stay, rental property, vacation home`,
     openGraph: {
-      title: `${property?.name} - ${property?.location?.city}, ${property?.location?.country} | Home Vision`,
-      description: `Discover ${property?.name}, a ${property?.type} with ${
-        property?.bedrooms || 0
-      } bedrooms and ${
-        property?.bathrooms || 0
-      } bathrooms. Book your stay now!`,
-      images: property?.images?.length
-        ? property.images[0]
-        : "/default-image.jpg",
+      title: `${property?.name || 'Property'} - ${property?.location?.city || 'Unknown City'}, ${property?.location?.country || 'Unknown Country'} | Home Vision`,
+      description: `Discover ${property?.name || 'this property'}, a ${property?.type || 'property'} with ${
+        property?.bedrooms ?? 0
+      } bedrooms and ${property?.bathrooms ?? 0} bathrooms. Book your stay now!`,
+      images: property?.images?.[0] || "/default-image.jpg",
       type: "website",
     },
     robots: "index, follow",
   };
+  
 }

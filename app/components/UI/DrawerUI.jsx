@@ -14,13 +14,12 @@ const DrawerUI = ({
   return (
     <div className={"loading_info"}>
       <motion.div
-        className="fixed inset-0 bg-black bg-opacity-50 z-[60]"
+        className="fixed inset-0 bg-black bg-opacity-50 z-[50]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       />
-
       <motion.div
         className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-2xl p-5 z-[70]"
         initial={{ transform: "translate3d(0, 100%, 0)" }}

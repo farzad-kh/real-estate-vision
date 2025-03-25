@@ -5,7 +5,7 @@ import SkeletonGallery from "@/app/components/UI/loading/SkeletonGallery";
 
 const loading = () => {
   return (
-    <div className="max-md:py-0 py-7">
+    <div className="max-md:py-0 py-7 w-full">
       <div className="container max-w-screen-2xl   m-auto  max-md:px-0 px-7 ">
         <SkeletonGallery />
       </div>
@@ -13,9 +13,9 @@ const loading = () => {
         <Row className="">
           <Col xs={24} sm={24} md={24} lg={14} xl={14}>
             <div className="w-full ">
-              <div className="mb-10">
+              <div className="mb-6">
                 <div className="mb-1 loading_info">
-                  <Skeleton
+                  <Skeleton active
                     paragraph={{
                       rows: 0,
                     }}
@@ -31,7 +31,7 @@ const loading = () => {
                   />
                 </div>
               </div>
-              <div className="mb-28">
+              <div className="mb-10">
                 <div className="loading-price">
                   <Skeleton
                     active="active"

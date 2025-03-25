@@ -110,14 +110,21 @@ const Navbar = ({ session }) => {
   };
 
   useEffect(() => {
-    console.log(open);
-
     if (open && windowSize) {
       document.body.classList.add("lock");
+      document.addEventListener("touchmove", preventDefault, { passive: false });
     } else {
       document.body.classList.remove("lock");
+      document.removeEventListener("touchmove", preventDefault);
     }
+    return () => {
+      document.removeEventListener("touchmove", preventDefault);
+    };
   }, [open]);
+  
+  function preventDefault(e) {
+    e.preventDefault();
+  }
   const itemsDrawer = [
     {
       label: <MessageStatus onClose={onClose} responsive />,

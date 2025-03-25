@@ -50,7 +50,7 @@ import React from "react";
 import { SlPicture } from "react-icons/sl";
 const ImageGallery = ({ propertyImg, onImageClick }) => {
   return (
-    <div className="flex gap-2 mb-6">
+    <div className="flex gap-2 max-lg:mb-0 mb-6">
       <div
         className={`max-md:w-full w-1/2  cursor-pointer relative `}
         onClick={() => onImageClick(0)}
@@ -63,7 +63,7 @@ const ImageGallery = ({ propertyImg, onImageClick }) => {
           height={600}
         />
         {propertyImg.length > 1 && (
-          <div className="absolute bottom-4 right-4 py-[6px] px-2 rounded bg-white text-sm inline-flex gap-2 items-center font-semibold">
+          <div className="absolute top-4 right-4 py-[6px] px-2 rounded bg-white text-sm inline-flex gap-2 items-center font-semibold">
             <SlPicture />
             show more
           </div>

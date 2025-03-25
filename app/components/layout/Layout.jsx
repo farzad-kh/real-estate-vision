@@ -89,7 +89,7 @@ const isPropertyPage = pathname.startsWith("/property/")
               <MessageReadStatusProvider>
                 <Header />
 
-                <main className={`${pathname==="/" || isPropertyPage ?"":"min-h-[90vh] container max-w-screen-2xl   m-auto mt-2 max-md:p-4 p-7"}`}>
+                <main className={`${pathname==="/" || isPropertyPage ?"min-h-[90vh]":"min-h-[90vh] container max-w-screen-2xl   m-auto mt-2 max-md:p-4 p-7"}`}>
                   {children}
                 </main>
 
