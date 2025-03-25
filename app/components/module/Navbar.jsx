@@ -103,28 +103,21 @@ const Navbar = ({ session }) => {
   const handleDropdownClick = (e) => {
     e.preventDefault();
     setOpen(true);
-  
-
-
   };
 
   const onClose = () => {
     setOpen(false);
-
-
-
   };
 
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log(open);
-    
-if(open && windowSize){
-  document.body.classList.add('lock');  
-}else{
-  document.body.classList.remove('lock');  
-}
-  },[open])
+
+    if (open && windowSize) {
+      document.body.classList.add("lock");
+    } else {
+      document.body.classList.remove("lock");
+    }
+  }, [open]);
   const itemsDrawer = [
     {
       label: <MessageStatus onClose={onClose} responsive />,

@@ -24,11 +24,11 @@ const SkeletonGallery = () => {
 
   return (
     <div className="flex gap-2 mb-6">
-      <div className="max-md:w-full w-1/2  cursor-pointer">
+      <div className="max-md:w-full w-1/2  cursor-pointer  ">
         <Skeleton.Image
           active={true}
           className={
-            " !w-full !h-full object-cover rounded-md bg-loader aspect-[16/10]"
+            " !w-full !h-full object-cover max-md:rounded-none rounded-md bg-loader aspect-[16/10]"
           }
         />
       </div>

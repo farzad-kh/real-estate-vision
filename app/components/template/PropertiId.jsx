@@ -1,35 +1,5 @@
-// "use client";
-// import React from "react";
-// import { Col, Row } from "antd";
-
-// import PropertyInfo from "../module/PropertyInfo";
-// import dynamic from "next/dynamic";
-// const Gallery = dynamic(() => import("../module/LightGallery"), {
-//   ssr: false,
-// });
-// const PropertiId = ({ property }) => {
-//   return (
-//     <div>
-//       <Row className="col-reverse-24">
-//         <Col xs={24} sm={24} md={24} lg={14} xl={14}>
-//           <section className="w-full max-lg:px-0 px-4 ">
-//             <PropertyInfo property={property} />
-//           </section>
-//         </Col>
-//         <Col xs={24} sm={24} md={24} lg={10} xl={10}>
-//           <section className="grid  gap-4 thumbnails max-lg:px-0 px-4   ">
-//             <Gallery propertyImg={property?.images} />
-//           </section>
-//         </Col>
-//       </Row>
-//     </div>
-//   );
-// };
-
-// export default PropertiId;
-
 "use client";
- 
+
 import { Col, Row } from "antd";
 
 import PropertyInfo from "../module/PropertyInfo";
@@ -59,24 +29,30 @@ const ProperyId = ({ property, isOwner, hasSentMessage }) => {
 
   return (
     <NotificationProvider>
-      <div>
+      <div  >
+        <div className="container max-w-screen-2xl   m-auto  max-md:p-0 p-7 flex ">
+
         <Gallery propertyImg={property?.images} />
-        <Row gutter={[16, 16]} >
+        </div>
+        <Row gutter={[16, 16]}  >
+          <div className="container max-w-screen-2xl   m-auto  max-md:p-4 p-7 flex ">
+
           <Col xs={24} sm={24} md={24} lg={14} xl={14}>
             <section className="w-full">
               <PropertyInfo property={property} />
             </section>
           </Col>
           <Col xs={24} sm={24} md={24} lg={10} xl={10}>
-            <section className="sticky top-5">
+            <section className="sticky top-5 ">
               <aside>
                 <ContactCard
                   propertyDetails={propertyDetails}
                   hasSentMessage={hasSentMessage}
-                />
+                  />
               </aside>
             </section>
           </Col>
+                  </div>
         </Row>
       </div>
     </NotificationProvider>
@@ -84,35 +60,3 @@ const ProperyId = ({ property, isOwner, hasSentMessage }) => {
 };
 
 export default ProperyId;
-
-// "use client";
-// import React from "react";
-// import { Col, Row } from "antd";
-
-// import PropertyInfo from "../module/PropertyInfo";
-// import dynamic from "next/dynamic";
-// const Gallery = dynamic(() => import("../module/LightGallery"), {
-//   ssr: false,
-// });
-// const PropertiId = ({ property }) => {
-//   return (
-//     <div>
-//                 <Gallery propertyImg={property?.images} />
-//       <Row className="col-reverse-24">
-//         <Col xs={24} sm={24} md={24} lg={14} xl={14}>
-//           <section className="w-full max-lg:px-0 px-4 ">
-
-//             <PropertyInfo property={property} />
-//           </section>
-//         </Col>
-//         <Col xs={24} sm={24} md={24} lg={10} xl={10}>
-//           <section className="  ">
-
-//           </section>
-//         </Col>
-//       </Row>
-//     </div>
-//   );
-// };
-
-// export default PropertiId;

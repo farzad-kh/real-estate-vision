@@ -6,7 +6,7 @@ const PropertyMapLoading = () => {
         <div className="flex justify-start w-full bg-[#f5f5f5] h-[380px] rounded overflow-hidden ">
         <div className=" self-center flex justify-center w-full ">
           <Lottie
-            className="w-[20%] h-[20%] "
+            className="max-md:w-[50%] w-[20%] max-md:h-[50%] h-[20%] "
             animationData={animationData}
             loop={true}
           />

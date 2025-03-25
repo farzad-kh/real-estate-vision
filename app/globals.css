@@ -61,7 +61,7 @@ html {
  body.lock{
   overflow-y: hidden  
  }
-/* 
+ 
 body:has(.loading_info) {
   overflow-y: hidden  
 }
@@ -80,7 +80,7 @@ body:-moz-has(.loading_info) {
 body:-ms-has(.loading_info) {
   overflow-y: hidden;
   touch-action: none;
-} */
+}  
 
 h1 {
   margin: 0;

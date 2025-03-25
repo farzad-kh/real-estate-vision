@@ -103,19 +103,19 @@ const Gallery = ({ propertyImg }) => {
     setIndex(i);
   };
   return (
-    <>
+    <div className="w-full">
       <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={index}
         slides={slides}
-        plugins={[Thumbnails, Zoom,Counter]}
+        plugins={window.innerWidth < 786 ? [Zoom, Counter] : [Thumbnails, Zoom, Counter]}
         counter={{ container: { style: { top: 0 } } }}
          
     
       />
       <ImageGallery propertyImg={propertyImg} onImageClick={onImageClick} />
-    </>
+    </div>
   );
 };
 
