@@ -27,8 +27,25 @@ const RecentlyProperty = () => {
 
         {/* Swiper Section */}
         <Swiper
-          spaceBetween={15}
-          slidesPerView="auto"
+          slidesPerView={1}
+          spaceBetween={10}
+      
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+          }}
+     
+       
           className="mySwiper !pt-3"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
@@ -36,7 +53,7 @@ const RecentlyProperty = () => {
             ? [...Array(8)].map((_, index) => (
                 <SwiperSlide
                   key={index}
-                  className="max-xs:w-[300px] max-w-[357px] w-full rounded-md px-1"
+                  className=" w-full rounded-md px-1"
                 >
                   <Skeleton.Node className="!w-full min-h-48 mb-4" active />
                   <Skeleton paragraph={{ rows: 2 }} />
@@ -44,7 +61,7 @@ const RecentlyProperty = () => {
               ))
             : recentProperties?.map((item) => (
                 <SwiperSlide
-                  className="max-xs:!w-[340px] !w-[357px] rounded-md px-1"
+                  className=" rounded-md px-1"
                   key={item.id}
                 >
                   <CardContainer property={item} />
