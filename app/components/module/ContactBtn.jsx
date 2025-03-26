@@ -40,12 +40,12 @@ const ContactBtn = ({
   }, []);
 
 
-  useEffect(() => {
-    disableScroll(open, winSize);
-    return () => {
-      cleanUpScroll();
-    };
-  }, [open]);
+  // useEffect(() => {
+  //   disableScroll(open, winSize);
+  //   return () => {
+  //     cleanUpScroll();
+  //   };
+  // }, [open]);
 
 
   const [price, perPrice] = ratesPer(rates).split("/");
@@ -97,7 +97,7 @@ const ContactBtn = ({
           />
         </ModalUI>
       ) : (
-        <Drawer
+        <Drawer className="max-sm:border-none "
           footer={[
             <Button key="back" onClick={handleCancel}>
               Cancel

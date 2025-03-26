@@ -15,7 +15,7 @@ const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session,drawer }
           Contact property manager
         </Title>
         }
-        <Flex className="max-sm:border-b border-gray-200" wrap justify="center">
+        <Flex className="" wrap justify="center">
           {Object.entries(rates).map(
             ([key, val]) =>
               val > 0 && (
@@ -38,7 +38,7 @@ const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session,drawer }
           )}
         </Flex>
 
-        <Flex vertical gap={16}>
+        <Flex className=" h-full " vertical gap={16}>
           {owner ? (
             <div className="text-center p-4 bg-gray-100 rounded-md flex flex-col">
               <Text>You are the owner of this property.</Text>

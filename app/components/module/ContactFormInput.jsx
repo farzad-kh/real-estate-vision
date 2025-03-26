@@ -41,16 +41,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
     }
   };
   
-
-  const phoneField = {
-    name: "phone.number",
-    label: "phone",
-    placeholder: "123 123 1234",
-    phone: true,
-    phoneName: "",
-    errors: errors?.phone?.number,
-    errorsPhone: errors?.phone?.code,
-  };
+ 
 
   if (hasSentMessage && !isSuccess)
     return (
@@ -61,7 +52,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
 
   return (
     <Form
-      className="max-sm:border-none  border w-full max-w-[860px] !p-6 rounded"
+      className=" w-full max-w-[860px] p-2   rounded"
       onFinish={handleSubmit(onSubmit)}
       layout="vertical"
     >
@@ -74,7 +65,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
           placeholder={"Enter your name"}
         />
 
-        <span className="max-sm:block hidden  h-[1px] w-full  bg-[#dde7f5]"></span>
+        <span className="max-sm:block hidden  h-[1px] w-full  bg-gray-100"></span>
       </div>
       <div className="form_input">
        
@@ -89,7 +80,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
           phone
         />
 
-        <span className="max-sm:block hidden  h-[1px] w-full  bg-[#dde7f5]"></span>
+        <span className="max-sm:block hidden  h-[1px] w-full  bg-gray-100"></span>
       </div>
       <div className="form_input">
         <TextInput
@@ -100,7 +91,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
           placeholder={"Enter your email"}
         />
 
-        <span className="max-sm:block hidden  h-[1px] w-full  bg-[#dde7f5]"></span>
+        <span className="max-sm:block hidden  h-[1px] w-full  bg-gray-100"></span>
       </div>
       <div className="form_input">
         <TextAreaInput
@@ -112,7 +103,7 @@ const ContactFormInput = ({ id, hasSentMessage }) => {
           placeholder={"Enter your email"}
         />
 
-        <span className="max-sm:block hidden  h-[1px] w-full  bg-[#dde7f5]"></span>
+      
       </div>
 
       <button

@@ -101,10 +101,10 @@ export const BookmarkDeleteBtn = ({
   btnStyle,
 }) => {
   return (
-    <Tooltip placement="topRight" title={"❌ Remove Bookmark"}>
+    <Tooltip placement="topLeft" title={"❌ Remove Bookmark"}>
       {pathname === "/dashboard/bookmarks" ? (
         <Popconfirm
-          placement="top"
+          placement="topLeft"
           description="Are you sure to delete this bookmark?"
           icon={
             <QuestionCircleOutlined

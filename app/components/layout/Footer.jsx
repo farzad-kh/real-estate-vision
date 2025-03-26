@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-700 py-10 mt-12 p-4">
+    <footer className="bg-gray-100 text-gray-700 py-6 mt-12 p-4">
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
       {/* About Us Section */}
       <div className="space-y-1">
@@ -58,12 +58,12 @@ const Footer = () => {
     </div>
   
    
-    <div className="border-t border-gray-300 mt-8 pt-6 text-center pb-2">
+    <div className="border-t border-gray-300 mt-4 py-6 text-center">
    
-      <p className="text-gray-500">
+      <p className="text-gray-500 text-sm">
         &copy; {new Date().getFullYear()} Home Vision. All Rights Reserved.
       </p>
-      <div className="text-center mt-1">
+      <div className="text-center font-semibold mt-1">
         <p>Made with ❤️ by farzad khorasani</p>
  
       </div>

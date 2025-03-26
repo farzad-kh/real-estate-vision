@@ -7,6 +7,7 @@ import { useMessageReadStatusContext } from "@/app/context/MessageReadStatusCont
 
 import menuItemIcons from "@/app/asset/navigation/index";
 import { Badge } from "antd";
+import { useRouter } from "next/navigation";
 const SidebarUI = () => {
   const { notif } = useMessageReadStatusContext();
   const menuItems = [
@@ -44,7 +45,7 @@ const SidebarUI = () => {
   ];
 
   const pathname = usePathname();
-
+  const router = useRouter();
   const segment = pathname.split("/");
   const activeSegment = segment.length > 2 ? segment[2] : segment[1];
 
@@ -63,15 +64,18 @@ const SidebarUI = () => {
             >
               <Link
                 href={item.href}
+                onClick={() =>
+                  item.href === "/dashboard/bookmarks" && router.refresh()
+                }
                 className="flex items-center text-sm relative"
                 aria-current={
                   activeSegment === item.active ? "page" : undefined
                 }
               >
                 {notif && item.active === "messages-sent" && (
-                <div className="absolute">
+                  <div className="absolute">
                     <Badge offset={[12, -12]} dot={1} />
-                </div>
+                  </div>
                 )}
                 {item.icon}
                 <span>{item.label}</span>
