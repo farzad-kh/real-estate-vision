@@ -53,7 +53,18 @@ const page = async ({ params: { id } }) => {
 
 export default page;
 
+
+
+
 export async function generateMetadata({ params: { id } }) {
+  if (!/^[0-9a-fA-F]{24}$/.test(id)) {
+    return {
+      title: "Property Not Found | Home Vision",
+      description: "The property you are looking for does not exist.",
+      robots: "noindex, nofollow",
+    };
+  }
+
   const { property } = await getProperty(id);
 
   if (!property) {
@@ -65,24 +76,33 @@ export async function generateMetadata({ params: { id } }) {
   }
 
   return {
-    title: `${property?.name || 'Property'} - ${property?.location?.city || 'Unknown City'}, ${property?.location?.country || 'Unknown Country'} | Home Vision`,
-    description: `Discover ${property?.name || 'this property'}, a ${property?.type || 'property'} with ${
-      property?.bedrooms ?? 0
-    } bedrooms and ${property?.bathrooms ?? 0} bathrooms, located in ${
-      property?.location?.city || 'an unknown city'
-    }, ${
-      property?.location?.country || 'an unknown country'
-    }. Enjoy modern amenities and a comfortable stay.`,
-    keywords: `${property?.name || 'Property'}, ${property?.type || 'Property'}, ${property?.location?.city || 'City'}, ${property?.location?.country || 'Country'}, luxury stay, rental property, vacation home`,
+    title: `${property?.name || "Property"} - ${
+      property?.location?.city || "Unknown City"
+    }, ${property?.location?.country || "Unknown Country"} | Home Vision`,
+    description: `Discover ${property?.name || "this property"}, a ${
+      property?.type || "property"
+    } with ${property?.bedrooms ?? 0} bedrooms and ${
+      property?.bathrooms ?? 0
+    } bathrooms, located in ${
+      property?.location?.city || "an unknown city"
+    }, ${property?.location?.country || "an unknown country"}. Enjoy modern amenities and a comfortable stay.`,
+    keywords: `${property?.name || "Property"}, ${
+      property?.type || "Property"
+    }, ${property?.location?.city || "City"}, ${
+      property?.location?.country || "Country"
+    }, luxury stay, rental property, vacation home`,
     openGraph: {
-      title: `${property?.name || 'Property'} - ${property?.location?.city || 'Unknown City'}, ${property?.location?.country || 'Unknown Country'} | Home Vision`,
-      description: `Discover ${property?.name || 'this property'}, a ${property?.type || 'property'} with ${
-        property?.bedrooms ?? 0
-      } bedrooms and ${property?.bathrooms ?? 0} bathrooms. Book your stay now!`,
+      title: `${property?.name || "Property"} - ${
+        property?.location?.city || "Unknown City"
+      }, ${property?.location?.country || "Unknown Country"} | Home Vision`,
+      description: `Discover ${property?.name || "this property"}, a ${
+        property?.type || "property"
+      } with ${property?.bedrooms ?? 0} bedrooms and ${
+        property?.bathrooms ?? 0
+      } bathrooms. Book your stay now!`,
       images: property?.images?.[0] || "/default-image.jpg",
       type: "website",
     },
     robots: "index, follow",
   };
-  
 }
