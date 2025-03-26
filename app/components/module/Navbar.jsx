@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Dropdown, Space, Avatar, Badge, Drawer, Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import navBarIcon from "@/app/asset/navigation/index";
@@ -15,7 +15,7 @@ import { cleanUpScroll, disableScroll } from "@/app/utils/helpers";
 const Navbar = ({ session }) => {
   const router = useRouter();
   const { notif, setNotif } = useMessageReadStatusContext();
-
+  const pathname = usePathname();
   const [windowSize, setWindowSize] = useState(false);
   const [open, setOpen] = useState(false);
   const getNotif = async () => {
@@ -123,25 +123,17 @@ const Navbar = ({ session }) => {
     {
       label: <MessageStatus onClose={onClose} responsive />,
       icon: null,
-      key: "0",
+      key: "/message",
     },
     {
-      label: (
-        <Link onClick={onClose} href="/dashboard">
-          Dashboard
-        </Link>
-      ),
+      label: <Link onClick={onClose} href="/dashboard">Dashboard</Link>,
       icon: navBarIcon.profile,
-      key: "1",
+      key: "/dashboard",
     },
     {
-      label: (
-        <Link onClick={onClose} href="/dashboard/properties">
-          My properties
-        </Link>
-      ),
+      label: <Link onClick={onClose} href="/dashboard/properties">My properties</Link>,
       icon: navBarIcon.properties,
-      key: "2",
+      key: "/dashboard/properties",
     },
     {
       label: (
@@ -156,7 +148,7 @@ const Navbar = ({ session }) => {
         </a>
       ),
       icon: navBarIcon.bookmarks,
-      key: "3",
+      key: "/dashboard/bookmarks",
     },
     {
       label: (
@@ -166,18 +158,14 @@ const Navbar = ({ session }) => {
         </Link>
       ),
       icon: navBarIcon["messages-sent"],
-      key: "4",
+      key: "/dashboard/messages-sent",
     },
     { type: "divider" },
     {
-      label: (
-        <Link className="!transition-none" href="/api/auth/signout">
-          Log out
-        </Link>
-      ),
+      label: <Link className="!transition-none" href="/api/auth/signout">Log out</Link>,
       icon: navBarIcon.logout,
       danger: true,
-      key: "5",
+      key: "logout",
     },
   ];
   return (
@@ -234,7 +222,7 @@ const Navbar = ({ session }) => {
             onClose={onClose}
             open={open}
           >
-            <Menu items={itemsDrawer} />
+            <Menu items={itemsDrawer} selectedKeys={[pathname]} />
           </Drawer>
         </>
       )}
