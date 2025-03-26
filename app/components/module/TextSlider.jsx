@@ -296,10 +296,11 @@ const TextSlider = () => {
               children: (
                 <motion.div
                   style={{ borderBottom: "1px solid #ddd" }}
-                  initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
-                  exit={{ opacity: 0, y: 15, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  initial={{ opacity: 0,  }}
+                  exit={{ opacity: 0,  }}
+                  animate={{ opacity: 1,  }}
                   transition={{ duration: 0.4 }}
+                
                   className="mb-2 pb-4"
                 >
                   <div className="max-md:flex hidden w-full mb-3">
@@ -307,7 +308,7 @@ const TextSlider = () => {
                       .filter((img) => img.id === slideOpen)
                       .map((img) => (
                         <div className="w-full" key={img.id}>
-                          <AnimatePresence mode="popLayout">
+                          <AnimatePresence >
                             {img.id === slideOpen && (
                               <motion.div
                                 initial={{ opacity: 0 }}

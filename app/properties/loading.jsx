@@ -5,6 +5,11 @@ const LoadingProperties = () => {
  
   return (
     <section className="items-center w-full loading_info ">
+
+<div className="mb-10 "/>
+ 
+ 
+
       <Row
         gutter={[
           16,  
@@ -25,7 +30,7 @@ const LoadingProperties = () => {
               className="!w-full !min-h-48  mb-4 "
               active={true}
             ></Skeleton.Node>
-            <Skeleton paragraph={{ rows: 2 }} />
+            <Skeleton active paragraph={{ rows: 2 }} />
           </Col>
         ))}
       </Row>

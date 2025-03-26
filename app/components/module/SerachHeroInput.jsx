@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 const SerachHeroInput = () => {
   return (
-    <section className="block w-full relative  h-[600px]  ">
+    <section className="block w-full relative max-md:h-[500px] h-[600px]  ">
       <Image
         src={logo}
         alt="Background"
