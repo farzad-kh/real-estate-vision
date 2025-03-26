@@ -453,8 +453,6 @@ label {
 
 
 
-
-
 @media (hover:none){
   
   .card-slider .swiper-button-next {
@@ -465,9 +463,24 @@ label {
 .card-slider .swiper-button-prev {
   display: none;
 }  
+
+
+.swiper-pagination {
+  display: block;
+}
+
+
+
 }
 
 @media (hover:hover) {
+
+  .swiper-pagination {
+    display:none
+  }
+  
+  
+
   .card-slider .swiper-button-next {
 
     background-color: rgba(52, 52, 52, 0.932);

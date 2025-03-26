@@ -41,7 +41,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+ 
 import { Navigation, Pagination } from "swiper/modules";
 import ImageCardUI from "./ImageCardUI";
 
@@ -58,6 +58,10 @@ const SplideSlideUI = ({ images }) => {
 
   return (
     <Swiper
+    style={{
+      '--swiper-navigation-color': '#fff',
+      '--swiper-pagination-color': '#fff',
+    }}
       className="card-slider"
       ref={swiperRef}
       modules={[Navigation, Pagination]}
@@ -65,6 +69,13 @@ const SplideSlideUI = ({ images }) => {
       spaceBetween={50}
       navigation={ true}
       lazy={"true"}
+     
+  
+  
+      pagination={{
+        dynamicBullets: true,
+      }}
+     
       speed={300}
       lazyPreloadPrevNext={0}
     >
