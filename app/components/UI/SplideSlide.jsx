@@ -55,7 +55,16 @@ const SplideSlideUI = ({ images }) => {
   });
   
 
-
+  const isTouchDevice = () => {
+    return (
+      'ontouchstart' in window ||
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+      window.matchMedia('(hover: none)').matches
+    );
+  };
+  
+  // console.log(isTouchDevice()); for touch devices
+  
   return (
     <Swiper
     style={{

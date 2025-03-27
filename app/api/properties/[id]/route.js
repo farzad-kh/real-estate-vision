@@ -283,15 +283,16 @@ export async function PATCH(req, { params: { id } }) {
             try {
                 uploadedImages = await Promise.all(
                     base64Strings.map((base64Image) =>
-                        cloudinary.uploader.upload(base64Image, {
-                            resource_type: "image",
-                            folder: "properties",
-                            transformation: [
-                                { width: 1340, height: 838 },
-                                { quality: "auto", fetch_format: "auto" },
-                            ],
-                        })
-                    )
+                      cloudinary.uploader.upload(base64Image, {
+                                   timeout: 600000  ,
+                                   resource_type: "image",
+                                   folder: "properties",
+                                   transformation: [
+                                     { width: 1340, height: 838 },
+                                     { quality: "auto:low", fetch_format: "auto" },
+                                   ],
+                                 })
+                               )
                 ).then((results) => results.map((result) => result.secure_url));
             } catch (error) {
                 console.error("Image upload failed:", error);
