@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Image, Upload, Form, message } from "antd";
@@ -61,14 +60,15 @@ const PicturesWall = ({
       return;
     }
 
-    const isLt2M = file.size / 1024 / 1024 < 5;
+    const isLt2M = file.size / 1024 / 1024 < 3;
     if (!isLt2M) {
-      message.error("Image must be smaller than 5MB!");
+      message.error("Image must be smaller than 3MB!");
       setMaxSize(true);
       return;
     }
 
     setMaxSize(false);
+    return false;
   };
 
   const handleChange = async ({ fileList: newFileList }) => {
@@ -107,7 +107,6 @@ const PicturesWall = ({
   };
 
   const dummyRequest = ({ file, onSuccess }) => {
-    
     setTimeout(() => {
       onSuccess("ok");
       handleChange({ fileList: [...fileList, file] });
@@ -138,7 +137,8 @@ const PicturesWall = ({
   );
 
   return (
-    <Form.Item className="overflow-y-auto overflow-x-hidden h-full max-h-[360px] w-full" 
+    <Form.Item
+      className="overflow-y-auto overflow-x-hidden h-full max-h-[360px] w-full"
       required
       validateStatus={
         errors && (!imgWatch?.length || errors?.images?.message) && "error"
@@ -173,8 +173,8 @@ const PicturesWall = ({
             {...field}
             listType="picture-card"
             fileList={fileList}
+            multiple
             innerRef={ref}
-            multiple={true}
             onPreview={handlePreview}
             onChange={handleChange}
             onRemove={handleRemove}
