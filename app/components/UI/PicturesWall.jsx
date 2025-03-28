@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Image, Upload, Form, message } from "antd";
@@ -137,7 +138,7 @@ const PicturesWall = ({
   );
 
   return (
-    <Form.Item className="overflow-y-auto overflow-x-hidden h-full max-h-[300px] w-full" 
+    <Form.Item className="overflow-y-auto overflow-x-hidden h-full max-h-[360px] w-full" 
       required
       validateStatus={
         errors && (!imgWatch?.length || errors?.images?.message) && "error"
@@ -173,6 +174,7 @@ const PicturesWall = ({
             listType="picture-card"
             fileList={fileList}
             innerRef={ref}
+            multiple={true}
             onPreview={handlePreview}
             onChange={handleChange}
             onRemove={handleRemove}
