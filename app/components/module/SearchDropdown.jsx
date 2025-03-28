@@ -50,7 +50,7 @@ const SearchDropdown = () => {
     (inputValue) => {
       if (!inputValue) return popularCountries;
 
-      const filteredOptions = ["Germany", "France", "Spain", "Iran"]
+      const filteredOptions = ["France", "Spain", "Iran"]
         .filter((item) => item.toLowerCase().includes(inputValue.toLowerCase()))
         .map((item) => ({
           value: item,
