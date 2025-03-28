@@ -516,14 +516,14 @@ label {
 
   .ant-card-cover:hover .card-slider .swiper-button-next.swiper-button-disabled {
     opacity: 0.5;
-    cursor: not-allowed;
-
+    cursor: pointer;
+    pointer-events: fill !important;
   }
 
   .ant-card-cover:hover .card-slider .swiper-button-prev.swiper-button-disabled {
     opacity: 0.5;
-    cursor: not-allowed;
-
+    cursor: pointer;
+pointer-events: fill !important;
   }
 
   .swiper-pagination-bullet-active {
