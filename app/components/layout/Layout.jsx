@@ -72,30 +72,37 @@ import QueryProvider from "@/app/provider/QueryProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import theme from "../theme/themeConfig";
 import { ConfigProvider } from "antd";
+import NprogressProvider from "@/app/provider/NprogressProvider";
 
 const Layout = ({ children }) => {
- 
- 
-const pathname=usePathname()
-const isPropertyPage = pathname.startsWith("/property/")
-
+  const pathname = usePathname();
+  const isPropertyPage = pathname.startsWith("/property/");
 
   return (
     <AntdRegistry>
       <ConfigProvider theme={theme}>
         <QueryProvider>
           <NextAuthProvider>
+            <NprogressProvider>
+
             <MessageStatusProvider>
               <MessageReadStatusProvider>
                 <Header />
 
-                <main className={`${pathname==="/" || isPropertyPage ?"min-h-[90vh]":"min-h-[90vh] container max-w-screen-2xl   m-auto mt-2 max-md:p-4 p-7"}`}>
+                <main
+                  className={`${
+                    pathname === "/" || isPropertyPage
+                    ? "min-h-[90vh]"
+                    : "min-h-[90vh] container max-w-screen-2xl   m-auto mt-2 max-md:p-4 p-7"
+                    }`}
+                    >
                   {children}
                 </main>
 
                 <Footer />
               </MessageReadStatusProvider>
             </MessageStatusProvider>
+                  </NprogressProvider>
           </NextAuthProvider>
         </QueryProvider>
       </ConfigProvider>
