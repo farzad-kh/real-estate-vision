@@ -53,7 +53,7 @@ const BookingMessageContainer = ({ messageSent,messageSentCount,pageSize,statusP
       <div className="w-full relative">
         <div className="flex justify-start gap-9 flex-col">
           <div className="mt-1">
-            <h2 className="text-xl font-semibold mb-3">My booking send</h2>
+            <h2 className="text-xl font-semibold mb-3">My Sent Messages</h2>
           </div>
           <TabsUI
             items={items}
