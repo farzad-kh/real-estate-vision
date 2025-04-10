@@ -23,7 +23,7 @@ app.prepare().then(() => {
   if (dev && hostname === "localhost") {
     const io = new Server(httpServer, {
       cors: {
-        origin: ["https://homevisions.vercel.app", "http://localhost:3000"],
+        origin:"*",
         transports: ["websocket"],
 
       },
