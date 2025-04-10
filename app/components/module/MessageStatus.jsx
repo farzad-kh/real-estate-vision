@@ -6,8 +6,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { GoMail } from "react-icons/go";
-
-const MessageStatus = ({ responsive,onClose }) => {
+import { socket } from "@/socket";
+const MessageStatus = ({ responsive, onClose }) => {
   const { data: session, status } = useSession();
 
   const getUnreadMessage = async () => {
@@ -25,6 +25,22 @@ const MessageStatus = ({ responsive,onClose }) => {
   });
 
   useEffect(() => {
+    if (!session?.user.id) return;
+
+    socket.emit("join", session.user.id);
+    console.log("joined socket with ID:", session.user.id);
+
+    socket.on("new_message", ({ unreadCount }) => {
+      console.log("🔥 new message received:", unreadCount);
+      setCount(unreadCount);
+    });
+
+    return () => {
+      socket.off("new_message");
+    };
+  }, [session?.user.id]);
+
+  useEffect(() => {
     if (!messages) return;
 
     setCount(messages);
@@ -33,8 +49,12 @@ const MessageStatus = ({ responsive,onClose }) => {
   return (
     <>
       {responsive ? (
-        <Link onClick={onClose} className="gap-x-4 items-center flex" href="/message">
-          <Badge overflowCount={9} offset={[2, 1]}  count={count || 0}>
+        <Link
+          onClick={onClose}
+          className="gap-x-4 items-center flex"
+          href="/message"
+        >
+          <Badge overflowCount={9} offset={[2, 1]} count={count || 0}>
             <GoMail className={`self-center  mt-[3px]  text-[18px] `} />
           </Badge>
           messages

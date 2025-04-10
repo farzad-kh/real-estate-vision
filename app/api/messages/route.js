@@ -36,7 +36,20 @@ export async function POST(req) {
         const message = await prisma.message.create({
             data
         })
-
+        const unreadCount = await prisma.message.count({
+            where: {
+                ownerId: propertyOwner.userId,
+                readByOwner: false,
+                deleted: false,
+            },
+        });
+        const socketId = global.users?.get(propertyOwner.userId);
+        if (global.io && socketId) {
+            global.io.to(socketId).emit("new_message", {
+                message,
+                unreadCount,
+            });
+        }
         return NextResponse.json({ message: "message" }, { status: 201 });
 
     } catch (err) {
@@ -51,12 +64,12 @@ export async function GET(req) {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
     const pageParams = searchParams.get("page") ? Number(searchParams.get("page")) : 1
-    const statusParams = searchParams.get("status") ?searchParams.get("status") :undefined
+    const statusParams = searchParams.get("status") ? searchParams.get("status") : undefined
 
-    const readByOwner = statusParams ? statusParams === "read" ? true : false  : undefined
+    const readByOwner = statusParams ? statusParams === "read" ? true : false : undefined
 
- 
- 
+
+
 
     const pageSize = 3
     try {
@@ -70,7 +83,7 @@ export async function GET(req) {
 
         const [messageData, messageTotal] = await Promise.all([
             await prisma.message.findMany({
-                where: { ownerId, deleted: false ,readByOwner},
+                where: { ownerId, deleted: false, readByOwner },
                 skip: (pageParams - 1) * pageSize,
                 take: pageSize,
                 include: {
@@ -84,7 +97,7 @@ export async function GET(req) {
                 orderBy: { createdAt: 'desc' }
             }),
             await prisma.message.count({
-                where: { ownerId, deleted: false ,readByOwner},
+                where: { ownerId, deleted: false, readByOwner },
 
             })
         ])
