@@ -1,17 +1,17 @@
 "use client";
-import { notFound, useSearchParams } from "next/navigation";
+import {  useSearchParams } from "next/navigation";
 
 import ProppertieContainer from "./ProppertieContainer";
-
 
 import LoadingProperties from "@/app/properties/loading";
 import FilterContainer from "../module/FilterContainer";
 import PaginationUI from "../UI/PaginationUI";
 import { NotificationProvider } from "@/app/context/NotificationContext";
 import { useGetProperties } from "@/app/hooks/useGetProperties";
+import NotFoundProperty from "../shared/NotFoundProperty";
 
 const SearchContainer = () => {
-const pageSize=12
+  const pageSize = 12;
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
@@ -20,9 +20,14 @@ const pageSize=12
 
   const { data, isFetching } = useGetProperties({ queryString, query });
 
-  if (!isFetching && (!data?.properties || data.properties.length === 0)) {
-  return notFound();
-  }
+  if (!isFetching && (!data?.properties || data.properties.length === 0))
+    return (
+      <NotFoundProperty
+        label={
+          "Sorry! No properties match your search criteria. Please adjust your filters or try again."
+        }
+      />
+    );
 
   return (
     <>
@@ -32,7 +37,10 @@ const pageSize=12
       ) : (
         <NotificationProvider>
           <ProppertieContainer properties={data.properties} />
-          <PaginationUI propertiesTotal={data.propertiesTotal} pageSize={pageSize}/>
+          <PaginationUI
+            propertiesTotal={data.propertiesTotal}
+            pageSize={pageSize}
+          />
         </NotificationProvider>
       )}
     </>
