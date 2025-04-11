@@ -5,23 +5,17 @@ import { Spin } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useGetMessageStatus } from "@/app/hooks/useGetMessageStatus";
 dayjs.extend(relativeTime);
 
 const HasSentMessageSuccessfully = ({ hasSentMessage, id }) => {
   const [formatUpdate, setFormatUpdate] = useState(undefined);
-  const getTimeReadMeesage = async () => {
-    if (!hasSentMessage) return null;
 
-    const res = await axios.get(`/api/messages/userStatus?propertyId=${id}`);
-    return res.data;
-  };
-  const { data: messageStatus, isLoading } = useQuery({
-    queryKey: ["messageStatus", id],
-    queryFn: getTimeReadMeesage,
-    retry: 2,
-    enabled: hasSentMessage,
+  const { data: messageStatus, isLoading } = useGetMessageStatus({
+    id,
+    hasSentMessage,
   });
-
+ 
 
   useEffect(() => {
     const readAt = messageStatus?.readAt;
@@ -30,7 +24,7 @@ const HasSentMessageSuccessfully = ({ hasSentMessage, id }) => {
       setFormatUpdate(formattedRelative);
     }
   }, [messageStatus]);
-  
+
   return (
     <>
       {isLoading ? (
