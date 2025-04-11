@@ -38,12 +38,12 @@ const HasSentMessageSuccessfully = ({ hasSentMessage, id }) => {
           <Spin indicator={<LoadingOutlined spin />} size="large" />
         </div>
       ) : messageStatus?.readBySender ? (
-        <div className="text-center  p-4 bg-sky-50 rounded-md">
+        <div className="text-center  p-4 bg-sky-50 rounded-md text-base">
           <p>Your message was seen by the owner</p>
           <p className="font-semibold">{formatUpdate}</p>
         </div>
       ) : (
-        <div className="text-center p-4 bg-gray-100 rounded-md">
+        <div className="text-center p-4 bg-gray-100 rounded-md text-base">
           <p>You have already sent a message for this property.</p>
           <p>The owner will contact you if they are interested.</p>
         </div>

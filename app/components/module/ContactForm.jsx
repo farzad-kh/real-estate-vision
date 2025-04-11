@@ -41,7 +41,7 @@ const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session,drawer }
         <Flex className=" h-full " vertical gap={16}>
           {owner ? (
             <div className="text-center p-4 bg-gray-100 rounded-md flex flex-col">
-              <Text>You are the owner of this property.</Text>
+              <Text  className="!text-base mb-2">You are the owner of this property.</Text>
               <Button size="large"
                 type="primary"
                 href="/dashboard/properties"
@@ -58,7 +58,7 @@ const ContactForm = ({ rates, id, owner, hasSentMessage, userId,session,drawer }
             />
           ) : (
            
-            <div className="text-center font-semibold text-blue-500">Sign in to send a message to the owner!</div>
+            <div className="text-center font-semibold text-blue-500 text-base underline">Sign in to send a message to the owner!</div>
             
           )}
         </Flex>

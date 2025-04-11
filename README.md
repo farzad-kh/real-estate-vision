@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real Estate Homevision 🏠
 
-## Getting Started
+A full-featured real estate listing platform for posting and discovering properties.
 
-First, run the development server:
+![Homepage Screenshot](https://res.cloudinary.com/drjhkyxst/image/upload/v1744280536/homevision_k7vnvh.png)
+
+Users can:
+
+- Post property ads with images (hosted via **Cloudinary**)
+- Contact property owners via messages
+- Mark messages as read / delete them
+- Receive notifications when their messages are read (real-time via **Socket.IO**)
+- Bookmark properties
+- Edit or delete their own listings
+- Access full message & bookmark history via a personal dashboard
+
+Advanced server-side filtering is implemented using **Prisma**, and search is handled through a combination of **SSR and CSR** using **React Query**. Pagination is implemented across all key sections.  
+All UI/UX design and backend development were fully implemented by me.
+
+---
+
+## 🛠 Tech Stack
+
+- **Next.js** (App Router)
+- **React Query**
+- **NextAuth**
+- **MongoDB** + **Prisma**
+- **Cloudinary** (image CDN)
+- **TailwindCSS**
+- **Ant Design**
+- **React Hook Form** + **Zod**
+- **REST API** with **Axios**
+- **Node.js**
+- **Socket.IO** (for real-time notifications)
+
+---
+
+## ✨ Features
+
+- **Post & Search Listings** – Users can create and search real estate listings.
+- **Image Upload via Cloudinary** – Fast and reliable CDN image hosting.
+- **Messaging System** – Users can contact property owners and receive real-time read receipts.
+- **Real-time Notifications** – Built with Socket.IO (Available in local dev only due to Vercel limitations).
+- **Edit/Delete Listings** – Full control over user-created listings.
+- **Bookmarking** – Save properties for later.
+- **Message History** – Keep track of all sent and received messages.
+- **Advanced Filtering** – Server-side filtering powered by Prisma.
+- **SSR + CSR Search** – Smart search via React Query & Next.js.
+- **Pagination** – Implemented across all key sections.
+- **User Dashboard** – Manage listings, bookmarks, and messages.
+
+---
+
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
 
 ```bash
+git clone https://github.com/farzad-kh/real-estate-vision.git
+cd real-estate-vision
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
