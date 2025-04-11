@@ -1,16 +1,16 @@
- 
 "use client";
 
 import { useSession } from "next-auth/react";
 import MessageContainerLoading from "../UI/loading/MessageContainerLoading";
 import MessageUI from "../UI/MessageUI";
 import { message as messageAnt } from "antd";
-
+import { socket } from "@/socket";
 import { useSearchParams } from "next/navigation";
 import TabsUI from "../UI/TabsUI";
 import { singelImageFilter } from "@/app/utils/helpers";
 import { useMessage } from "@/app/hooks/useMessage";
 import PaginationUI from "../UI/PaginationUI";
+import { useState,useEffect } from "react";
 
 const MessageContainer = () => {
   const { data: session } = useSession();
@@ -22,12 +22,29 @@ const MessageContainer = () => {
 
   const queryString = params.toString();
   const query = params.size > 0 ? "?" + queryString : "";
-
+  const [realTimeMessage, setRealTimeMessage] = useState(undefined);
   const [messageApi, contextHolder] = messageAnt.useMessage();
+
+  useEffect(() => {
+    if (!socket || socket === null) return;
+    if (!session?.user.id) return;
+
+    socket.emit("join", session?.user?.id);
+
+    socket.on("new_message", ({ message }) => {
+      console.log("soket", message);
+      setRealTimeMessage(message);
+    });
+
+    return () => {
+      socket.off("new_message");
+    };
+  }, [session?.user.id]);
 
   const { data: message = [], isLoading } = useMessage(
     session,
     query,
+    realTimeMessage,
     queryString
   );
   console.log(message);
@@ -45,9 +62,11 @@ const MessageContainer = () => {
   }
 
   if ((!messages || messages.length === 0) && !hasFilter) {
-    return <div className="text-center  mt-11 text-xl font-semibold">
-      <p>You don't have any message</p>
-    </div>;
+    return (
+      <div className="text-center  mt-11 text-xl font-semibold">
+        <p>You don't have any message</p>
+      </div>
+    );
   }
 
   return (
