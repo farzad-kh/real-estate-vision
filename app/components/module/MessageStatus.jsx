@@ -25,6 +25,7 @@ const MessageStatus = ({ responsive, onClose }) => {
   });
 
   useEffect(() => {
+    if (!socket || socket === null) return;
     if (!session?.user.id) return;
 
     socket.emit("join", session.user.id);
